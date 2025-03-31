@@ -5,11 +5,19 @@ import multer from "multer";
 import {
   registorValidation,
   sendMailVelidator,
+  passwordResetValidator,
+  loginValidator,
 } from "../helpers/validation.js";
 import {
   userRegister,
   sendMailVerification,
+  forgetPassword,
+  updatePassword,
+  userLogin,
+  userProfile,
 } from "../controllers/userController.js";
+
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 router.use(express.json());
@@ -60,4 +68,13 @@ router.post(
 );
 
 router.post("/send-mail-verification", sendMailVelidator, sendMailVerification);
+
+router.post("/forgot-password", passwordResetValidator, forgetPassword);
+
+router.post("/update-password", updatePassword);
+
+router.post("/login", loginValidator, userLogin);
+
+router.get("/profile", auth, userProfile);
+
 export default router;

@@ -29,3 +29,16 @@ export const sendMailVelidator = [
     .isEmail()
     .normalizeEmail({ gmail_remove_dots: true }),
 ];
+
+export const passwordResetValidator = [
+  check("email", "Please include a valid email")
+    .isEmail()
+    .normalizeEmail({ gmail_remove_dots: true }),
+];
+
+export const loginValidator = [
+  check("email", "Please include a valid email")
+    .isEmail()
+    .normalizeEmail({ gmail_remove_dots: true }),
+  check("password", "password is required").not().isEmpty(),
+];
