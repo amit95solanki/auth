@@ -1,7 +1,11 @@
 import jwt from "jsonwebtoken";
 
 const verifyToken = (req, res, next) => {
-  console.log("hello");
+  // Remove console.log that's cluttering test output
+
+  // Initialize body and query to prevent 'undefined' errors
+  req.body = req.body || {};
+  req.query = req.query || {};
 
   const token =
     req.body.token || req.query.token || req.headers["authorization"];

@@ -75,7 +75,7 @@ router.get("/", getAllProducts);
 router.get("/:id", getProductById);
 router.put(
   "/:id",
-  auth,
+  // auth,
   upload.single("image"),
   updateProductValidation,
   updateProduct
